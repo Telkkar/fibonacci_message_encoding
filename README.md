@@ -27,7 +27,7 @@ we will use the Fibonacci sequence as our determining position.
     1. Pick a word *w_n* such that character *c_n* is at 
        position *p* where
        
-           p = (v - 1) mod s
+            p = (v - 1) mod s
        
        where
        - v = *v_m_n*
@@ -40,7 +40,7 @@ we will use the Fibonacci sequence as our determining position.
 3. For each word *w_n*:
     1. Find the character *c_n*** at position *p* where
        
-           p = (v - 1) mod s
+            p = (v - 1) mod s
        
        where
        - v = *v_m_n*
@@ -63,7 +63,7 @@ Given:
 - *m_0* := 0
 
 | n        | 0   | 1   | 2   |
-|----------------------------|
+|----------|-----|-----|-----|
 | string   | 'r' | 'u' | 'n' |
 | *v_m_n*  | 1   | 1   | 2   |
 | p        | 0   | 0   | 1   |
@@ -97,7 +97,7 @@ Given:
 - *m_0* := 0
 
 | n        | 0       | 1      | 2            |
-|--------------------------------------------|
+|----------|---------|--------|--------------|
 | words    | 'raise' | 'user' | 'unbecoming' |
 | *v_m_n*  | 1       | 1      | 2            |
 | p        | 0       | 0      | 1            |
