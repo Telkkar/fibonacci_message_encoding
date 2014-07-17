@@ -1,8 +1,10 @@
 import random
 
 from fibonacci_message_encoding import errors
+from fibonacci_message_encoding import fibonacci
 
-def encode(secret_string, wordlist=None):
+
+def encode(secret_string, initial_n=0, wordlist=None):
     if wordlist is None:
         f = open("words", "r")
         temp_wordlist = f.readlines()
@@ -15,10 +17,10 @@ def encode(secret_string, wordlist=None):
                                temp_wordlist))
 
     message = []
+    fibonacci_values = []
 
-    # Generate fibo values V_m_n using m_0
-    # TODO: add possibility of calculating closed-form fibo numbers using starting position
-    fibonacci_values = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]
+    for i in range(len(secret_string)):
+        fibonacci_values.append(fibonacci._fibonacci_number_start_1(initial_n + i))
 
     for i, char in enumerate(secret_string):
         suitable_words = list(filter(lambda word: word[(fibonacci_values[i] - 1) % len(word)] is char,
@@ -36,12 +38,12 @@ def encode(secret_string, wordlist=None):
     return message
 
 
-def decode(message_list):
+def decode(message_list, initial_n=0):
     secret = []
+    fibonacci_values = []
 
-    # Generate fibo values V_m_n using m_0
-    # TODO: add possibility of calculating closed-form fibo numbers using starting position
-    fibonacci_values = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]
+    for i in range(len(message_list)):
+        fibonacci_values.append(fibonacci._fibonacci_number_start_1(initial_n + i))
 
     for i, word in enumerate(message_list):
         position = (fibonacci_values[i] - 1) % len(word)
