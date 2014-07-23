@@ -29,14 +29,14 @@ class TestAlgorithmsFibonacci(unittest.TestCase):
         for i, FIBO_VALUE in enumerate(FIBONACCI_VALUES[1:]):
             self.assertEqual(fibonacci._fibonacci_number_start_1(i), FIBO_VALUE)
 
-    def test_fibonacci_equation_start_1_number_70(self):
+    def test_fibonacci_equation_start_0_number_70(self):
         self.assertEqual(fibonacci._fibonacci_number_start_0(70), NUMBER_70)
 
-    def test_fibonacci_equation_start_1_number_71(self):
+    def test_fibonacci_equation_start_0_number_71(self):
         self.assertEqual(fibonacci._fibonacci_number_start_0(71), NUMBER_71)
 
-    def test_fibonacci_equation_start_1_number_72(self):
+    def test_fibonacci_equation_start_0_number_72(self):
         self.assertEqual(fibonacci._fibonacci_number_start_0(72), NUMBER_72)
 
-    def test_fibonacci_equation_start_1_number_300(self):
+    def test_fibonacci_equation_start_0_number_300(self):
         self.assertEqual(fibonacci._fibonacci_number_start_0(300), NUMBER_300)
