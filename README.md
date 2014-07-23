@@ -13,6 +13,9 @@ This entails that the sender and receiver place letters at certain
 positions in the messages. This is effectively what we are doing, but
 we will use the Fibonacci sequence as our determining position.
 
+## Dependencies
+- mpmath
+
 ## Requirements
 - Database of words [extremely large]
 - Secret string to embed in a message

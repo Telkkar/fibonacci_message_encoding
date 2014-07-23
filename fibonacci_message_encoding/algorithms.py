@@ -1,10 +1,13 @@
 import random
+import mpmath
 
 from fibonacci_message_encoding import errors
-from fibonacci_message_encoding import fibonacci
 
 
-def encode(secret_string, initial_n=0, wordlist=None):
+def encode(secret_string, initial_n=1, wordlist=None):
+    # Set decimal precision for fibonacci calculation
+    mpmath.mp.dps = 5000
+
     if wordlist is None:
         f = open("words", "r")
         temp_wordlist = f.readlines()
@@ -20,7 +23,7 @@ def encode(secret_string, initial_n=0, wordlist=None):
     fibonacci_values = []
 
     for i in range(len(secret_string)):
-        fibonacci_values.append(fibonacci._fibonacci_number_start_1(initial_n + i))
+        fibonacci_values.append(int(mpmath.fibonacci(initial_n + i)))
 
     for i, char in enumerate(secret_string):
         suitable_words = list(filter(lambda word: word[(fibonacci_values[i] - 1) % len(word)] is char,
@@ -38,12 +41,14 @@ def encode(secret_string, initial_n=0, wordlist=None):
     return message
 
 
-def decode(message_list, initial_n=0):
+def decode(message_list, initial_n=1):
+    mpmath.mp.dps = 5000
+
     secret = []
     fibonacci_values = []
 
     for i in range(len(message_list)):
-        fibonacci_values.append(fibonacci._fibonacci_number_start_1(initial_n + i))
+        fibonacci_values.append(int(mpmath.fibonacci(initial_n + i)))
 
     for i, word in enumerate(message_list):
         position = (fibonacci_values[i] - 1) % len(word)
